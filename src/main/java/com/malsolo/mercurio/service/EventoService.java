@@ -5,10 +5,14 @@
 
 package com.malsolo.mercurio.service;
 
+import com.malsolo.mercurio.domain.Evento;
+
 /**
  *
  * @author Javier Beneito Barquero <jbbarquero@gmail.com>
  */
 public interface EventoService {
+    
+    public Evento save(Evento evento);
     
 }

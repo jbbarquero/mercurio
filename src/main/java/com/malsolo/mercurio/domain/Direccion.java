@@ -12,6 +12,16 @@ package com.malsolo.mercurio.domain;
 public abstract class Direccion {
     
     private Long id;
-    
+
+    public Direccion() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     
 }

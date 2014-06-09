@@ -7,7 +7,6 @@ package com.malsolo.mercurio.business;
 
 import com.malsolo.mercurio.domain.Evento;
 import com.malsolo.mercurio.exceptions.EventoInvalidoException;
-import com.malsolo.mercurio.exceptions.TipoInvalidoException;
 
 /**
  *
@@ -15,6 +14,6 @@ import com.malsolo.mercurio.exceptions.TipoInvalidoException;
  */
 public interface EventosValidador {
     
-    public void valida(Evento evento) throws EventoInvalidoException, TipoInvalidoException;
+    public Evento valida(Evento evento) throws EventoInvalidoException;
     
 }
