@@ -48,6 +48,6 @@ public abstract class GestorAlertas {
         return realizarEnvioAlerta(alerta);
     }
     
-    public abstract List<Mensaje> realizarEnvioAlerta(Alerta alerta);
+    protected abstract List<Mensaje> realizarEnvioAlerta(Alerta alerta);
     
 }

@@ -36,9 +36,13 @@ public class Main {
 
     private final AlertasExecutor alertasExecutor;
 
-    public static void main(String... args) throws EventoInvalidoException {
+    public static void main(String... args) throws EventoInvalidoException, InterruptedException {
 
         logger.info("MAIN Mercurio");
+        
+        Thread.sleep(5000);
+        
+        logger.info("Wake up, Mercurio!");
 
         long start = System.nanoTime();
 
@@ -50,8 +54,17 @@ public class Main {
         long millis = TimeUnit.NANOSECONDS.toMillis(time)
                 - TimeUnit.SECONDS.toMillis(seconds);
 
-        logger.info("END MAIN Mercurio. It took {},{} s ({} us)", seconds, millis, time);
+        tiempo("END MAIN Mercurio. It took ", time);
+        logger.info("END MAIN Mercurio. Sending {} Events took {},{} s ({} us)"
+                , NUMERO_EVENTOS, seconds, millis, time);
 
+    }
+    
+    public static void tiempo(String message, long time) {
+        long seconds = TimeUnit.NANOSECONDS.toSeconds(time);
+        long millis = TimeUnit.NANOSECONDS.toMillis(time)
+                - TimeUnit.SECONDS.toMillis(seconds);
+        logger.info("{} {},{} s ({} us)", message, seconds, millis, time);
     }
 
     public Main() {
@@ -120,7 +133,11 @@ public class Main {
         * Total time: 4:17.670s
         */
         this.alertasExecutor = 
-                new MultiThreadAlertasExecutor(gestorAlertas, tipoService, eventosGenerator);
+                new MultiThreadWithFrontAlertasExecutor(eventosGenerator, gestorAlertas, tipoService);
+//                new MultiThreadAlertasExecutor(gestorAlertas, tipoService, eventosGenerator);
+
+//        this.alertasExecutor = 
+//                new SingleThreadWithFrontAlertasExecutor(gestorAlertas, tipoService, eventosGenerator);
 
     }
 

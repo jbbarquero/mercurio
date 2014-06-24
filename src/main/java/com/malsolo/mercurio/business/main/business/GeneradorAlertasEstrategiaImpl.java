@@ -22,7 +22,7 @@ public class GeneradorAlertasEstrategiaImpl implements GeneradorAlertasEstrategi
 
     @Override
     public Alerta generaAlerta(Evento evento, Tipo tipo) {
-        System.out.println("Alerta generada del evento: " + evento + "de tipo: " + tipo);
+        logger.debug("Alerta generada del evento {} de tipo {} ", evento, tipo);
         return new Alerta();
     }
     
